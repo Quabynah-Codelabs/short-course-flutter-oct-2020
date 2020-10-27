@@ -1,0 +1,109 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter create my_first_app
+
+## exception
+
+FileSystemException: FileSystemException: Cannot copy file to 'C:\Users\HEWLET PACKED\Documents\GitHub\short-course-flutter-oct-2020\authors\ChrisKodo\flutter-sample\my_first_app\android\app\src\main\res\mipmap-hdpi\ic_launcher.png', path = 'C:\flutter\packages\flutter_tools\templates\app\android.tmpl\app\src\main\res\mipmap-hdpi\ic_launcher.png' (OS Error: Access is denied.
+, errno = 5)
+
+```
+#0      _File.throwIfError (dart:io/file_impl.dart:635:7)
+#1      _File.copySync (dart:io/file_impl.dart:340:5)
+#2      ForwardingFile.copySync (package:file/src/forwarding/forwarding_file.dart:30:50)
+#3      ForwardingFile.copySync (package:file/src/forwarding/forwarding_file.dart:30:50)
+#4      Template.render.<anonymous closure> (package:flutter_tools/src/template.dart:272:18)
+#5      _LinkedHashMapMixin.forEach (dart:collection-patch/compact_hash.dart:377:8)
+#6      Template.render (package:flutter_tools/src/template.dart:195:24)
+#7      CreateCommand._renderTemplate (package:flutter_tools/src/commands/create.dart:801:21)
+#8      _rootRunUnary (dart:async/zone.dart:1198:47)
+#9      _CustomZone.runUnary (dart:async/zone.dart:1100:19)
+#10     _FutureListener.handleValue (dart:async/future_impl.dart:143:18)
+#11     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:696:45)
+#12     Future._propagateToListeners (dart:async/future_impl.dart:725:32)
+#13     Future._completeWithValue (dart:async/future_impl.dart:529:5)
+#14     _AsyncAwaitCompleter.complete (dart:async-patch/async_patch.dart:40:15)
+#15     _completeOnAsyncReturn (dart:async-patch/async_patch.dart:311:13)
+#16     Template.fromName (package:flutter_tools/src/template.dart)
+#17     _rootRunUnary (dart:async/zone.dart:1198:47)
+#18     _CustomZone.runUnary (dart:async/zone.dart:1100:19)
+#19     _FutureListener.handleValue (dart:async/future_impl.dart:143:18)
+#20     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:696:45)
+#21     Future._propagateToListeners (dart:async/future_impl.dart:725:32)
+#22     Future._completeWithValue (dart:async/future_impl.dart:529:5)
+#23     _AsyncAwaitCompleter.complete (dart:async-patch/async_patch.dart:40:15)
+#24     _completeOnAsyncReturn (dart:async-patch/async_patch.dart:311:13)
+#25     _templateImageDirectory (package:flutter_tools/src/template.dart)
+#26     _rootRunUnary (dart:async/zone.dart:1198:47)
+#27     _CustomZone.runUnary (dart:async/zone.dart:1100:19)
+#28     _FutureListener.handleValue (dart:async/future_impl.dart:143:18)
+#29     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:696:45)
+#30     Future._propagateToListeners (dart:async/future_impl.dart:725:32)
+#31     Future._completeWithValue (dart:async/future_impl.dart:529:5)
+#32     _AsyncAwaitCompleter.complete (dart:async-patch/async_patch.dart:40:15)
+#33     _completeOnAsyncReturn (dart:async-patch/async_patch.dart:311:13)
+#34     loadPackageConfigWithLogging (package:flutter_tools/src/dart/package_map.dart)
+#35     _rootRunUnary (dart:async/zone.dart:1198:47)
+#36     _CustomZone.runUnary (dart:async/zone.dart:1100:19)
+#37     _FutureListener.handleValue (dart:async/future_impl.dart:143:18)
+#38     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:696:45)
+#39     Future._propagateToListeners (dart:async/future_impl.dart:725:32)
+#40     Future._completeWithValue (dart:async/future_impl.dart:529:5)
+#41     _AsyncAwaitCompleter.complete (dart:async-patch/async_patch.dart:40:15)
+#42     _completeOnAsyncReturn (dart:async-patch/async_patch.dart:311:13)
+#43     readAnyConfigFileUri (package:package_config/src/package_config_io.dart)
+#44     _rootRunUnary (dart:async/zone.dart:1198:47)
+#45     _CustomZone.runUnary (dart:async/zone.dart:1100:19)
+#46     _FutureListener.handleValue (dart:async/future_impl.dart:143:18)
+#47     Future._propagateToListeners.handleValueCallback (dart:async/future_impl.dart:696:45)
+#48     Future._propagateToListeners (dart:async/future_impl.dart:725:32)
+#49     Future._completeWithValue (dart:async/future_impl.dart:529:5)
+#50     Future._asyncCompleteWithValue.<anonymous closure> (dart:async/future_impl.dart:567:7)
+#51     _rootRun (dart:async/zone.dart:1190:13)
+#52     _CustomZone.run (dart:async/zone.dart:1093:19)
+#53     _CustomZone.runGuarded (dart:async/zone.dart:997:7)
+#54     _CustomZone.bindCallbackGuarded.<anonymous closure> (dart:async/zone.dart:1037:23)
+#55     _microtaskLoop (dart:async/schedule_microtask.dart:41:21)
+#56     _startMicrotaskLoop (dart:async/schedule_microtask.dart:50:5)
+#57     _runPendingImmediateCallback (dart:isolate-patch/isolate_patch.dart:118:13)
+#58     _RawReceivePortImpl._handleMessage (dart:isolate-patch/isolate_patch.dart:169:5)
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel dev, 1.24.0-3.0.pre, on Microsoft Windows [Version 10.0.10240], locale en-US)
+    • Flutter version 1.24.0-3.0.pre at C:\flutter
+    • Framework revision 2783f8e2e1 (5 days ago), 2020-10-22 09:36:06 -0700
+    • Engine revision defa8be2b1
+    • Dart version 2.11.0 (build 2.11.0-242.0.dev)
+
+[✗] Android toolchain - develop for Android devices
+    ✗ Unable to locate Android SDK.
+      Install Android Studio from: https://developer.android.com/studio/index.html
+      On first launch it will assist you in installing the Android SDK components.
+      (or visit https://flutter.dev/docs/get-started/install/windows#android-setup for detailed instructions).
+      If the Android SDK has been installed to a custom location, please use
+      `flutter config --android-sdk` to update to that location.
+
+
+[✓] Android Studio (version 4.1.0)
+    • Android Studio at C:\Android\studio
+    • Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    • Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    • Java version OpenJDK Runtime Environment (build 1.8.0_242-release-1644-b01)
+
+[✓] VS Code (version 1.50.1)
+    • VS Code at C:\Users\HEWLET PACKED\AppData\Local\Programs\Microsoft VS Code
+    • Flutter extension version 3.15.1
+
+[!] Connected device
+    ! No devices available
+
+! Doctor found issues in 2 categories.
+```
