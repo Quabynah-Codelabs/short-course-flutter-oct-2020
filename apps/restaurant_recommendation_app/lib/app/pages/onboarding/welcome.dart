@@ -39,7 +39,7 @@ class _WelcomePageState extends State<WelcomePage> {
               ),
             ),
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+              filter: ImageFilter.blur(sigmaX: kSpacingX8, sigmaY: kSpacingX12),
               child: Container(
                 decoration: BoxDecoration(
                     color: themeData.scaffoldBackgroundColor

@@ -10,11 +10,12 @@ class PageIndicator extends StatefulWidget {
   final Color activeColor;
   final Color inActiveColor;
 
-  const PageIndicator(
-      {@required this.pages,
-      @required this.currentPage,
-      this.activeColor,
-      this.inActiveColor});
+  const PageIndicator({
+    @required this.pages,
+    @required this.currentPage,
+    this.activeColor,
+    this.inActiveColor,
+  });
 
   @override
   _PageIndicatorState createState() => _PageIndicatorState();

@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:restaurant_recommendation_app/app/routes/routes.gr.dart';
 import 'package:restaurant_recommendation_app/app/widgets/buttons.dart';
 import 'package:restaurant_recommendation_app/app/widgets/page_indicator.dart';
 import 'package:restaurant_recommendation_app/core/constants.dart';
+import 'package:restaurant_recommendation_app/core/providers/prefs.dart';
 import 'package:restaurant_recommendation_app/core/size_config.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -21,9 +23,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
     "Enjoy",
   ];
   final _images = <String>[
-    kSplashBackgroundAsset,
-    kSplashBackgroundAsset,
-    kSplashBackgroundAsset,
+    kExploreSvgAsset,
+    kFoodSvgAsset,
+    kEnjoySvgAsset,
   ];
 
   @override
@@ -57,13 +59,16 @@ class _OnboardingPageState extends State<OnboardingPage> {
             ),
           ),
           Positioned(
-            top: kHeight * 0.4,
-            width: kWidth,
-            bottom: kSpacingNone,
-            child: PageIndicator(
-              pages: _numOfPages,
-              currentPage: _currentPage,
-              activeColor: themeData.colorScheme.onBackground,
+            left: getProportionateScreenWidth(kSpacingX16),
+            bottom: getProportionateScreenHeight(kSpacingX36),
+            child: Consumer<PrefsProvider>(
+              builder: (_, prefs, __) => PageIndicator(
+                pages: _numOfPages,
+                currentPage: _currentPage,
+                inActiveColor: prefs.isLightTheme
+                    ? themeData.disabledColor
+                    : themeData.colorScheme.onBackground,
+              ),
             ),
           ),
           Positioned(
@@ -73,8 +78,6 @@ class _OnboardingPageState extends State<OnboardingPage> {
               width: kWidth * 0.4,
               themeData: themeData,
               gravity: ButtonIconGravity.END,
-              color: themeData.scaffoldBackgroundColor,
-              textColor: themeData.colorScheme.onBackground,
               icon: Icons.arrow_right_alt_outlined,
               onTap: () => context.navigator.popAndPush(Routes.homePage),
               label: "Explore",
@@ -107,40 +110,48 @@ class _OnboardingPageItem extends StatelessWidget {
     return Container(
       height: kHeight,
       width: kWidth,
-      child: Stack(
-        fit: StackFit.expand,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(
-            imageAsset,
-            height: kHeight,
-            width: kWidth,
-            fit: BoxFit.cover,
+          Container(
+            height: kHeight * 0.3,
+            width: kHeight * 0.3,
+            child: ClipOval(
+              clipBehavior: Clip.hardEdge,
+              child: Image.asset(
+                imageAsset,
+                height: kHeight * 0.3,
+                width: kHeight * 0.3,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-          Positioned(
-            top: getProportionateScreenHeight(kSpacingX72),
-            bottom: kSpacingNone,
-            left: kWidth * 0.15,
-            right: kWidth * 0.15,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  title,
-                  style: themeData.textTheme.headline5
-                      .copyWith(color: kWhiteColor),
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(kSpacingX16),
-                ),
-                Text(
-                  description,
-                  textAlign: TextAlign.center,
-                  style: themeData.textTheme.subtitle1
-                      .copyWith(color: kWhiteColor),
-                ),
-              ],
+          // Image(
+          //   image: Svg(imageAsset),
+          //   height: kHeight,
+          //   width: kWidth,
+          //   fit: BoxFit.cover,
+          // ),
+          SizedBox(
+            height: getProportionateScreenHeight(kSpacingX48),
+          ),
+          Text(
+            title,
+            style: themeData.textTheme.headline5,
+          ),
+          SizedBox(
+            height: getProportionateScreenHeight(kSpacingX16),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenWidth(kSpacingX24),
+            ),
+            child: Text(
+              description,
+              textAlign: TextAlign.center,
+              style: themeData.textTheme.subtitle1,
             ),
           ),
         ],
