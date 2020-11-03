@@ -1,4 +1,6 @@
 import 'package:auto_route/auto_route_annotations.dart';
+import 'package:restaurant_recommendation_app/app/pages/home/home.dart';
+import 'package:restaurant_recommendation_app/app/pages/onboarding/onboarding.dart';
 import 'package:restaurant_recommendation_app/app/pages/onboarding/welcome.dart';
 
 /// Run this in a new terminal to generate new routes upon edit:
@@ -8,6 +10,12 @@ import 'package:restaurant_recommendation_app/app/pages/onboarding/welcome.dart'
     AdaptiveRoute(
       page: WelcomePage,
       initial: true,
+    ),
+    AdaptiveRoute(
+      page: OnboardingPage,
+    ),
+    AdaptiveRoute(
+      page: HomePage,
     ),
   ],
 )

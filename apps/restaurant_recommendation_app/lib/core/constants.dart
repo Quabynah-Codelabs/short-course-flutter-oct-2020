@@ -82,7 +82,7 @@ const double kEmphasisHigh = 0.9;
 const kAppName = "Popina";
 const kAppNameShort = "Popina";
 const kAppSlogan =
-    "Official mobile application for the Exhibition Assemblies of God Church";
+    "Find the best restaurants with competitive price & ratings around you";
 const kAppVersion = "v0.0.1";
 const kArtisanReviewHelpDialogContent =
     "Sensitive data (like email addresses, phone numbers, user ids etc) will not be made public to customers on this platform.\nYour ratings are also based on the accumulated reviews by customers you have served over the last 6 months";
@@ -96,6 +96,7 @@ const kFunctionalityUnavailable =
 const kMemberString = "Member";
 const kLogoAsset = "assets/images/banner.webp";
 const kLogoDarkAsset = "assets/images/banner.webp";
+const kSplashBackgroundAsset = "assets/images/splash.webp";
 const kNotificationAsset = "assets/svgs/notifications.svg";
 const kLocationAsset = "assets/svgs/location.svg";
 const kLoremText =
