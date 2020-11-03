@@ -7,7 +7,8 @@ class PopinaApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.light,
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.system,
       theme: themeData(context),
       darkTheme: darkThemeData(context),
       home: WelcomePage(),
