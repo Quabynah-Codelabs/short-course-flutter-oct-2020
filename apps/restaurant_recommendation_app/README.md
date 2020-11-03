@@ -1,6 +1,6 @@
 # restaurant_recommendation_app
 
-A restaurant recommendation application for end users
+A new Flutter application.
 
 ## Getting Started
 
