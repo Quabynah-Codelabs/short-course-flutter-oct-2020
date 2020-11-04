@@ -7,7 +7,7 @@ class PopinaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Popina",
-      theme: ThemeData(),
+      theme: ThemeData.light(),
       home: WelcomePage(),
       darkTheme: ThemeData.dark(),
     );
