@@ -53,7 +53,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 children: [
                   RaisedButton(
                     textColor: Colors.white,
-                    color: Color(0xFF123456),
+                    color: Color(0xFF1e2a78),
                     child: Text("Sign in with Google"),
                     onPressed: pressButton,
                   ),
