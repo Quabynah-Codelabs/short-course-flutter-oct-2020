@@ -1,5 +1,11 @@
 // Added the material package file
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:restaurant_recommendation_app/app/widgets/button.dart';
+import 'package:restaurant_recommendation_app/core/size_config.dart';
+
+import 'home.dart';
 
 // Initial page of the application
 class WelcomePage extends StatefulWidget {
@@ -13,6 +19,22 @@ class _WelcomePageState extends State<WelcomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // Initialize SizeConfig here. This is only done once
+    SizeConfig().init(context);
+
+    // has data on the display of your application's device
+    // var mediaQuery = MediaQuery.of(context);
+
+    // gets the size of your current display
+    // var size = mediaQuery.size;
+
+    // get width & height
+    // final kWidth = size.width;
+    // final kHeight = size.height;
+
+    // gives us the current theme of the application
+    final kTheme = Theme.of(context);
+
     return Scaffold(
         body: Container(
       // Stack => Used to place one child over the other
@@ -20,7 +42,24 @@ class _WelcomePageState extends State<WelcomePage> {
         children: [
           // Contains background image
           Container(
-            child: Image.asset("assets/images/food.jpg"),
+            height: SizeConfig.screenHeight,
+            width: SizeConfig.screenWidth,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: ExactAssetImage("assets/images/food.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: ClipRRect(
+              // make sure we apply clip it properly
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: Container(
+                  alignment: Alignment.center,
+                  color: kTheme.scaffoldBackgroundColor.withOpacity(0.3),
+                ),
+              ),
+            ),
           ),
 
           // Contains title & description
@@ -51,11 +90,10 @@ class _WelcomePageState extends State<WelcomePage> {
             child: SafeArea(
               child: Column(
                 children: [
-                  RaisedButton(
-                    textColor: Colors.white,
-                    color: Color(0xFF1e2a78),
-                    child: Text("Sign in with Google"),
-                    onPressed: pressButton,
+                  ButtonOutlined(
+                    text: "Sign in with Google",
+                    // color: kTheme.colorScheme.error,
+                    onTap: () {},
                   ),
                   // Used to create spacing between widgets
                   SizedBox(
@@ -63,7 +101,13 @@ class _WelcomePageState extends State<WelcomePage> {
                   ),
                   FlatButton(
                     child: Text("Skip for now"),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(
+                            builder: (_) => HomePage(),
+                          ),
+                          (route) => route is HomePage);
+                    },
                   ),
                 ],
               ),
@@ -74,7 +118,5 @@ class _WelcomePageState extends State<WelcomePage> {
     ));
   }
 
-  void pressButton() {
-
-  }
+  void pressButton() {}
 }
