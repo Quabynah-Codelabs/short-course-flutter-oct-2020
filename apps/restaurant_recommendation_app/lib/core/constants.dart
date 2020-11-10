@@ -5,39 +5,40 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'size_config.dart';
 
 /// Defaults
-const _kGoogleMapsApiKey = "" /*TODO: Add google maps key here as well*/
-;
+const _kGoogleMapsApiKey =
+    "AIzaSyCRIFN0PIycMhm4wZxra6-sZgW188g1o8M" /*TODO: Add google maps key here as well*/
+    ;
 
 const kRatingStar = Entypo.star;
 
 Widget buildFunctionalityNotAvailablePanel(BuildContext context) => Container(
-  height: kSpacingX320,
-  child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      Icon(
-        Entypo.progress_empty,
-        size: getProportionateScreenHeight(kSpacingX96),
-        color: Theme.of(context).colorScheme.onBackground,
+      height: kSpacingX320,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Icon(
+            Entypo.progress_empty,
+            size: getProportionateScreenHeight(kSpacingX96),
+            color: Theme.of(context).colorScheme.onBackground,
+          ),
+          SizedBox(height: getProportionateScreenHeight(kSpacingX24)),
+          Text(
+            "Functionality currently not available",
+            style: Theme.of(context).textTheme.subtitle1,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(height: getProportionateScreenHeight(kSpacingX8)),
+          Text(
+            "Grab a beverage and check back later!",
+            style: Theme.of(context).textTheme.bodyText2.copyWith(
+                  color: Theme.of(context).disabledColor,
+                ),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
-      SizedBox(height: getProportionateScreenHeight(kSpacingX24)),
-      Text(
-        "Functionality currently not available",
-        style: Theme.of(context).textTheme.subtitle1,
-        textAlign: TextAlign.center,
-      ),
-      SizedBox(height: getProportionateScreenHeight(kSpacingX8)),
-      Text(
-        "Grab a beverage and check back later!",
-        style: Theme.of(context).textTheme.bodyText2.copyWith(
-          color: Theme.of(context).disabledColor,
-        ),
-        textAlign: TextAlign.center,
-      ),
-    ],
-  ),
-);
+    );
 
 Future getMapStyle({bool isLightTheme = false}) async =>
     await rootBundle.loadString(
@@ -99,10 +100,13 @@ const kLogoDarkAsset = "assets/images/banner.webp";
 
 /// Image source => https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80
 const kSplashBackgroundAsset = "assets/images/splash.webp";
+
 /// Image credit => https://unsplash.com/photos/fdlZBWIP0aM
 const kExploreSvgAsset = "assets/images/map.webp";
+
 /// Image credit => https://www.freepik.com/vectors/food
 const kFoodSvgAsset = "assets/images/food.webp";
+
 /// Image credit => https://unsplash.com/photos/Orz90t6o0e4
 const kEnjoySvgAsset = "assets/images/enjoy.webp";
 
