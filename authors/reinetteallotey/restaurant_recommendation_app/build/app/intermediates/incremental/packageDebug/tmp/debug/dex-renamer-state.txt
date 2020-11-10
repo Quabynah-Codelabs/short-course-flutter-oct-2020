@@ -1,0 +1,4 @@
+#Wed Nov 04 18:24:13 GMT 2020
+base.0=C\:\\Users\\Reinette\\Documents\\GitHub\\short-course-flutter-oct-2020\\authors\\reinetteallotey\\restaurant_recommendation_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
