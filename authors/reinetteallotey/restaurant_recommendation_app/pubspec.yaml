@@ -9,6 +9,13 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  #helps to make calls to google API services
+  http: ^0.12.2
+
+  #users current location
+  geolocator: ^6.1.4
+  #google maps for flutter
+  google_maps_flutter: ^1.0.6
   # google fonts package
   google_fonts: ^1.1.1
   # flutter icons package

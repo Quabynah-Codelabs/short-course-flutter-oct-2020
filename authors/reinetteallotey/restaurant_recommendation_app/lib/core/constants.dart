@@ -5,8 +5,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'size_config.dart';
 
 /// Defaults
-const _kGoogleMapsApiKey =
-    "AIzaSyCRIFN0PIycMhm4wZxra6-sZgW188g1o8M" /*TODO: Add google maps key here as well*/
+const _kGoogleMapsApiKey ="AIzaSyDl_zpjZNkDM5MTowdI6XC2fA3ImgT0MuM";
     ;
 
 const kRatingStar = Entypo.star;
