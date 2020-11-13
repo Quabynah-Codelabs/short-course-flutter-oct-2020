@@ -1,0 +1,37 @@
+[
+  {
+    "business_status": "OPERATIONAL",
+    "geometry": {
+      "location": {
+        "lat": 5.6536749,
+        "lng": -0.185941
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 5.654816430291501,
+          "lng": -0.184592619708498
+        },
+        "southwest": {
+          "lat": 5.652118469708497,
+          "lng": -0.187290580291502
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/restaurant-71.png",
+    "name": "Aunties Lizzy's kitchen",
+    "place_id": "ChIJIU6uf8Kd3w8RgT7HVThRrbc",
+    "plus_code": {
+      "compound_code": "MR37+FJ Accra, Ghana",
+      "global_code": "6CQXMR37+FJ"
+    },
+    "reference": "ChIJIU6uf8Kd3w8RgT7HVThRrbc",
+    "scope": "GOOGLE",
+    "types": [
+      "restaurant",
+      "food",
+      "point_of_interest",
+      "establishment"
+    ],
+    "vicinity": "J.K.M. Hodasi Road, Accra"
+  }
+]
