@@ -5,8 +5,7 @@ import 'package:flutter_icons/flutter_icons.dart';
 import 'size_config.dart';
 
 /// Defaults
-const _kGoogleMapsApiKey = "" /*TODO: Add google maps key here as well*/
-    ;
+const _kGoogleMapsApiKey = "";
 
 const kRatingStar = Entypo.star;
 
@@ -99,10 +98,13 @@ const kLogoDarkAsset = "assets/images/banner.webp";
 
 /// Image source => https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80
 const kSplashBackgroundAsset = "assets/images/splash.webp";
+
 /// Image credit => https://unsplash.com/photos/fdlZBWIP0aM
 const kExploreSvgAsset = "assets/images/map.webp";
+
 /// Image credit => https://www.freepik.com/vectors/food
 const kFoodSvgAsset = "assets/images/food.webp";
+
 /// Image credit => https://unsplash.com/photos/Orz90t6o0e4
 const kEnjoySvgAsset = "assets/images/enjoy.webp";
 
