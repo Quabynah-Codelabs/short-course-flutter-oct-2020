@@ -26,8 +26,8 @@ ThemeData themeData(BuildContext context) =>
         color: kDisabledColor.withOpacity(kOpacityX70),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kSpacingX16),
+        shape: BeveledRectangleBorder(
+          borderRadius: BorderRadius.circular(kSpacingX24),
         ),
         backgroundColor: kSecondaryLightColor,
       ),
@@ -116,8 +116,8 @@ ThemeData darkThemeData(BuildContext context) =>
         color: kDisabledColor.withOpacity(kOpacityX70),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kSpacingX16),
+        shape: BeveledRectangleBorder(
+          borderRadius: BorderRadius.circular(kSpacingX24),
         ),
         backgroundColor: kPrimaryColorDark,
       ),

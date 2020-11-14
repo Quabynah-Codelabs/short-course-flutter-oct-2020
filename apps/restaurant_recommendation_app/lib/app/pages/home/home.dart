@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                             fit: StackFit.expand,
                             children: [
                               Positioned(
-                                height: kHeight * 0.45,
+                                height: kHeight * 0.5,
                                 width: kWidth,
                                 child: GoogleMap(
                                   mapType: MapType.normal,
@@ -138,12 +138,10 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     Positioned(
                                       child: Container(
-
                                         height: getProportionateScreenHeight(
                                             kSpacingX72),
                                         width: getProportionateScreenHeight(
                                             kSpacingX72),
-
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           color: kTheme.colorScheme.secondary,
@@ -151,9 +149,9 @@ class _HomePageState extends State<HomePage> {
                                         child: Image(
                                           image: Svg(kLogoAsset),
                                           height: getProportionateScreenHeight(
-                                              kSpacingX72),
+                                              kSpacingX48),
                                           width: getProportionateScreenHeight(
-                                              kSpacingX72),
+                                              kSpacingX48),
                                         ),
                                         alignment: Alignment.center,
                                       ),
@@ -203,11 +201,6 @@ class _HomePageState extends State<HomePage> {
             child: Container(
               alignment: Alignment.center,
               child: FloatingActionButton(
-                shape: BeveledRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(kSpacingX24),
-                  ),
-                ),
                 child: Icon(Feather.home),
                 onPressed: () {
                   /*TODO: Add click action*/
