@@ -92,6 +92,13 @@ class _WelcomePageState extends State<WelcomePage> {
                     textColor: themeData.colorScheme.onBackground,
                     onTap: () {
                       /*TODO: Perform Google sign in*/
+                      ScaffoldMessenger.of(context)
+                        ..removeCurrentSnackBar()
+                        ..showSnackBar(
+                          SnackBar(
+                            content: Text("Google sign in unavailable"),
+                          ),
+                        );
                     },
                     label: "Sign in with Google",
                     icon: AntDesign.google,

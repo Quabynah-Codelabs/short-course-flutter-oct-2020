@@ -93,8 +93,8 @@ const kStaffString = "Staff";
 const kFunctionalityUnavailable =
     "Functionality currently not available. Grab a beverage and check back later!";
 const kMemberString = "Member";
-const kLogoAsset = "assets/images/banner.webp";
-const kLogoDarkAsset = "assets/images/banner.webp";
+const kLogoAsset = "assets/logo.svg";
+const kLogoDarkAsset = "assets/logo.svg";
 
 /// Image source => https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80
 const kSplashBackgroundAsset = "assets/images/splash.webp";
@@ -139,13 +139,14 @@ const kPlaceholderColor = Color(0x70000000);
 const kDisabledColor = Color(0xFFD8D8D8);
 const kFieldColor = Color(0xFFe0e0e0);
 
-const kPrimaryColor = Color(0xFF1e2a78);
-const kSecondaryLightColor = Color(0xFF1e2a78);
+const kPrimaryColor = Color(0xFF773300);
+const kSecondaryLightColor = Color(0xFF773300);
 const kErrorLightColor = Color(0xffE91E63);
 const kAccentLightColor = kSecondaryLightColor;
 const kBackgroundLightColor = kWhiteColor;
 const kCardLightColor = kFieldColor;
 
+// const kPrimaryColorDark = Color(0xFF28c7fa);
 const kPrimaryColorDark = Color(0xFF28c7fa);
 const kSecondaryDarkColor = Color(0xFF28c7fa);
 const kErrorDarkColor = Color(0xffEC407A);

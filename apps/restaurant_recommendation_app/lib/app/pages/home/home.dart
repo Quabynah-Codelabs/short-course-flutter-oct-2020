@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:restaurant_recommendation_app/core/constants.dart';
 import 'package:restaurant_recommendation_app/core/service_locator.dart';
@@ -137,19 +138,28 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                     Positioned(
                                       child: Container(
+
                                         height: getProportionateScreenHeight(
                                             kSpacingX72),
                                         width: getProportionateScreenHeight(
                                             kSpacingX72),
+
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                           color: kTheme.colorScheme.secondary,
                                         ),
+                                        child: Image(
+                                          image: Svg(kLogoAsset),
+                                          height: getProportionateScreenHeight(
+                                              kSpacingX72),
+                                          width: getProportionateScreenHeight(
+                                              kSpacingX72),
+                                        ),
+                                        alignment: Alignment.center,
                                       ),
                                       top: kSpacingNone,
                                       left: kSpacingNone,
                                       right: kSpacingNone,
-                                      /*TODO: Add logo here*/
                                     ),
                                   ],
                                 ),
