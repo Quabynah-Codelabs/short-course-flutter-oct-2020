@@ -9,6 +9,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  # json annotation for dart code generation
+  json_annotation: ^3.1.0
   # helps us to make calls to the Google Places API service
   http: ^0.12.2
   # user's current location
@@ -25,6 +27,10 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  # code generator for dart
+  build_runner: ^1.10.4
+  # serializer
+  json_serializable: ^3.5.0
   flutter_test:
     sdk: flutter
 

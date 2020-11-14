@@ -1,11 +1,12 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:http/http.dart' as http;
 import 'package:restaurant_recommendation_app/core/size_config.dart';
+import 'package:restaurant_recommendation_app/data/repositories/location.dart';
+import 'package:restaurant_recommendation_app/data/repositories/restaurant.dart';
+import 'package:restaurant_recommendation_app/domain/entities/position.dart';
+import 'package:restaurant_recommendation_app/domain/entities/restaurant.dart';
 
 /// Home page of the application
 /// Shows a list of all restaurants based on user filters
@@ -18,43 +19,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Completer<GoogleMapController> _controller = Completer();
   final double _kMapZoom = 16;
-  CameraPosition _kUserLocation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    if (mounted) {
-      _getCurrentPositionOfDevice();
-    }
-  }
-
-  // get's the current position of the device
-  void _getCurrentPositionOfDevice() async {
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-    print("Lat => ${position.latitude} & Lng => ${position.longitude}");
-    _kUserLocation = CameraPosition(
-      target: LatLng(
-        position.latitude,
-        position.longitude,
-      ),
-      zoom: _kMapZoom,
-    );
-    setState(() {});
-
-    // Get all restaurants
-    final response = await http.get(
-        "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=5.6545119,-0.1839843&rankby=distance&type=restaurant&key=AIzaSyCRIFN0PIycMhm4wZxra6-sZgW188g1o8M");
-
-    // get the body of the response
-    var body = response.body;
-
-    // retrieve results
-    var decodedResult = json.decode(body);
-    var results = decodedResult["results"][0];
-    print("Results returned => ${results["name"]}");
-  }
+  final _locationRepo = LocationRepository();
+  final _restaurantRepo = RestaurantRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -64,18 +30,47 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         height: SizeConfig.screenHeight,
         width: SizeConfig.screenWidth,
-        child: _kUserLocation == null
-            ? Center(
-                child: CircularProgressIndicator.adaptive(),
-              )
-            : GoogleMap(
-                mapType: MapType.normal,
-                initialCameraPosition: _kUserLocation,
-                onMapCreated: (GoogleMapController controller) {
-                  _controller.complete(controller);
-                },
-              ),
+        child: FutureBuilder<BasePosition>(
+            future: _locationRepo.getUserLocation(),
+            builder: (context, snapshot) {
+              return snapshot.connectionState == ConnectionState.waiting
+                  ? Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    )
+                  : snapshot.hasData
+                      ? FutureBuilder<List<BaseRestaurant>>(
+                          initialData: [],
+                          future: _restaurantRepo.getRestaurants(
+                              position: snapshot.data),
+                          builder: (context, restaurantSnapshots) {
+                            return /*restaurantSnapshots.hasData
+                                ? */
+                                GoogleMap(
+                              mapType: MapType.normal,
+                              initialCameraPosition: CameraPosition(
+                                target: LatLng(
+                                    snapshot.data.lat, snapshot.data.lng),
+                                zoom: _kMapZoom,
+                              ),
+                              onMapCreated: (GoogleMapController controller) {
+                                // _controller.complete(controller);
+                              },
+                            );
+                            // : Container();
+                          },
+                        )
+                      : Center(
+                          child: Text(
+                              "An error occurred while retrieving your location"),
+                        );
+            }),
       ),
     );
   }
 }
+
+/*
+*  Center(
+                child: CircularProgressIndicator.adaptive(),
+              )
+* */
