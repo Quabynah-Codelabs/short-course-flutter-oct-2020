@@ -21,12 +21,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // Screen dimensions
   final kHeight = SizeConfig.screenHeight;
   final kWidth = SizeConfig.screenWidth;
 
+  // Location service
   final _locationService = sl.get<BaseLocationService>();
+
+  // Repository
   final _repository = sl.get<BaseRestaurantRepository>();
 
+  // Google maps related variables
   Completer<GoogleMapController> _controller = Completer();
   final double _kMapZoom = 18;
 
@@ -94,6 +99,10 @@ class _HomePageState extends State<HomePage> {
                                         top: getProportionateScreenHeight(
                                             kSpacingX36),
                                       ),
+                                      padding: EdgeInsets.only(
+                                        bottom: getProportionateScreenHeight(
+                                            kToolbarHeight),
+                                      ),
                                       clipBehavior: Clip.hardEdge,
                                       decoration: BoxDecoration(
                                         color: kTheme.cardColor,
@@ -102,6 +111,28 @@ class _HomePageState extends State<HomePage> {
                                           topRight:
                                               Radius.circular(kSpacingX24),
                                         ),
+                                      ),
+                                      child: ListView.separated(
+                                        itemBuilder: (_, index) {
+                                          final item = restaurants[index];
+                                          return ListTile(
+                                            onTap: () {
+                                              ScaffoldMessenger.of(context)
+                                                ..removeCurrentSnackBar()
+                                                ..showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(item.name),
+                                                  ),
+                                                );
+                                            },
+                                            title: Text(item.name),
+                                          );
+                                        },
+                                        separatorBuilder: (_, __) => SizedBox(
+                                          height: getProportionateScreenHeight(
+                                              kSpacingX4),
+                                        ),
+                                        itemCount: restaurants.length,
                                       ),
                                     ),
                                     Positioned(
@@ -118,6 +149,7 @@ class _HomePageState extends State<HomePage> {
                                       top: kSpacingNone,
                                       left: kSpacingNone,
                                       right: kSpacingNone,
+                                      /*TODO: Add logo here*/
                                     ),
                                   ],
                                 ),
