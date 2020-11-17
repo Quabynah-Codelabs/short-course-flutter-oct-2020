@@ -2,11 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:restaurant_recommendation_app/core/constants.dart';
 import 'package:restaurant_recommendation_app/core/size_config.dart';
 import 'package:restaurant_recommendation_app/data/repositories/location.dart';
 import 'package:restaurant_recommendation_app/data/repositories/restaurant.dart';
 import 'package:restaurant_recommendation_app/domain/entities/position.dart';
 import 'package:restaurant_recommendation_app/domain/entities/restaurant.dart';
+
+import 'restaurant_details.dart';
 
 /// Home page of the application
 /// Shows a list of all restaurants based on user filters
@@ -76,28 +79,61 @@ class _HomePageState extends State<HomePage> {
                                         height: SizeConfig.screenHeight * 0.65,
                                         width: SizeConfig.screenWidth,
                                         child: Container(
-                                          height:
-                                              SizeConfig.screenHeight * 0.65,
+                                          padding: EdgeInsets.only(top: kSpacingX24),
                                           width: SizeConfig.screenWidth,
-                                          
-                                          child: ListView.builder(
-                                            itemBuilder: (_, int index) {
-                                              final restaurant =
-                                                  restaurantSnapshots
-                                                      .data[index];
-                                              return ListTile(
-                                                onTap: () {},
-                                                title: Text(restaurant.name),
-                                                subtitle:
-                                                    Text(restaurant.vicinity),
-                                              );
-                                            },
-                                            // physics: BouncingScrollPhysics(),
-                                            itemCount:
-                                                restaurantSnapshots.hasData
-                                                    ? restaurantSnapshots
-                                                        .data.length
-                                                    : 0,
+                                          decoration: BoxDecoration(
+                                            color:
+                                                kTheme.scaffoldBackgroundColor,
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(kSpacingX24),
+                                              topRight: Radius.circular(kSpacingX24),
+                                            ),
+                                          ),
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                "List of restaurants around you",
+                                                style:
+                                                    kTheme.textTheme.headline5,
+                                              ),
+                                              Expanded(
+                                                child: ListView.builder(
+                                                  padding: EdgeInsets.zero,
+                                                  itemBuilder: (_, int index) {
+                                                    // current restaurant in the list
+                                                    final restaurant =
+                                                        restaurantSnapshots
+                                                            .data[index];
+
+                                                    // build the list item using ListTile
+                                                    return ListTile(
+                                                      onTap: () {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                            builder: (_) =>
+                                                                RestaurantDetailsPage(
+                                                              restaurant:
+                                                                  restaurant,
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                      title:
+                                                          Text(restaurant.name),
+                                                      subtitle: Text(
+                                                          restaurant.vicinity),
+                                                    );
+                                                  },
+                                                  // physics: BouncingScrollPhysics(),
+                                                  itemCount: restaurantSnapshots
+                                                          .hasData
+                                                      ? restaurantSnapshots
+                                                          .data.length
+                                                      : 0,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
