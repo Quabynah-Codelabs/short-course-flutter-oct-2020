@@ -8,7 +8,7 @@ part of 'response.dart';
 
 Response _$ResponseFromJson(Map<String, dynamic> json) {
   return Response(
-    attributions: json['html_attributions'] as String,
+    attributions: json['html_attributions'] as List,
     nextPageToken: json['next_page_token'] as String,
     result: (json['result'] as List)
         ?.map((e) =>

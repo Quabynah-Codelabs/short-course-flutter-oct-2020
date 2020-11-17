@@ -8,7 +8,7 @@ part 'response.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Response extends BaseResponse {
   @JsonKey(name: "html_attributions")
-  final String attributions;
+  final List<dynamic> attributions;
   final String nextPageToken;
   final List<Restaurant> result;
   final String status;

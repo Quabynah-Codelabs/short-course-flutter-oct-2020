@@ -2,7 +2,7 @@ import 'package:restaurant_recommendation_app/domain/entities/restaurant.dart';
 
 /// Expected result from API
 abstract class BaseResponse {
-  String get attributions;
+  List<dynamic> get attributions;
 
   String get nextPageToken;
 
