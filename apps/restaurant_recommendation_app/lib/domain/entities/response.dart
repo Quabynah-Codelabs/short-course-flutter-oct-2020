@@ -6,7 +6,7 @@ abstract class BaseResponse {
 
   String get nextPageToken;
 
-  List<BaseRestaurant> get result;
+  List<BaseRestaurant> get results;
 
   String get status;
 }

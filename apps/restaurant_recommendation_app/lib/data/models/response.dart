@@ -10,10 +10,10 @@ class Response extends BaseResponse {
   @JsonKey(name: "html_attributions")
   final List<dynamic> attributions;
   final String nextPageToken;
-  final List<Restaurant> result;
+  final List<Restaurant> results;
   final String status;
 
-  Response({this.attributions, this.nextPageToken, this.result, this.status});
+  Response({this.attributions, this.nextPageToken, this.results, this.status});
 
   /// A necessary factory constructor for creating a new Response instance
   /// from a map. Pass the map to the generated `_$ResponseFromJson()` constructor.

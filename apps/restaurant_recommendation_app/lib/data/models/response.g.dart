@@ -10,7 +10,7 @@ Response _$ResponseFromJson(Map<String, dynamic> json) {
   return Response(
     attributions: json['html_attributions'] as List,
     nextPageToken: json['next_page_token'] as String,
-    result: (json['result'] as List)
+    results: (json['result'] as List)
         ?.map((e) =>
             e == null ? null : Restaurant.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -21,6 +21,6 @@ Response _$ResponseFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ResponseToJson(Response instance) => <String, dynamic>{
       'html_attributions': instance.attributions,
       'next_page_token': instance.nextPageToken,
-      'result': instance.result,
+      'result': instance.results,
       'status': instance.status,
     };

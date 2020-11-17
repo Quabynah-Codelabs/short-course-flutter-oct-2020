@@ -25,7 +25,7 @@ class RestaurantRepository implements BaseRestaurantRepository {
       var decodedResult = json.decode(body);
       var decodedResponse = Response.fromJson(decodedResult);
       print("Status => ${decodedResponse.status}");
-      yield decodedResponse.result;
+      yield decodedResponse.results;
     } catch (e) {
       print("Unable to load restaurants => $e");
     }
