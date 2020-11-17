@@ -19,11 +19,14 @@ class RestaurantRepository implements BaseRestaurantRepository {
 
     // get the body of the response
     var body = response.body;
-
-    // retrieve results
-    var decodedResult = json.decode(body);
-    var decodedResponse = Response.fromJson(decodedResult);
-    print("Status => ${decodedResponse.status}");
-    return decodedResponse.result;
+    try {
+      // retrieve results
+      var decodedResult = json.decode(body);
+      var decodedResponse = Response.fromJson(decodedResult);
+      print("Status => ${decodedResponse.status}");
+      return decodedResponse.result;
+    } catch (e) {
+      print("Unable to load restaurants => $e");
+    }
   }
 }

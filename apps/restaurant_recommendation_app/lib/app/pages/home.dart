@@ -43,19 +43,63 @@ class _HomePageState extends State<HomePage> {
                           future: _restaurantRepo.getRestaurants(
                               position: snapshot.data),
                           builder: (context, restaurantSnapshots) {
-                            return /*restaurantSnapshots.hasData
-                                ? */
-                                GoogleMap(
-                              mapType: MapType.normal,
-                              initialCameraPosition: CameraPosition(
-                                target: LatLng(
-                                    snapshot.data.lat, snapshot.data.lng),
-                                zoom: _kMapZoom,
-                              ),
-                              onMapCreated: (GoogleMapController controller) {
-                                // _controller.complete(controller);
-                              },
-                            );
+                            return restaurantSnapshots.connectionState ==
+                                    ConnectionState.waiting
+                                ? Center(
+                                    child: CircularProgressIndicator.adaptive(),
+                                  )
+                                : Stack(
+                                    fit: StackFit.expand,
+                                    children: [
+                                      Positioned(
+                                        top: 0,
+                                        height: SizeConfig.screenHeight * 0.4,
+                                        width: SizeConfig.screenWidth,
+                                        child: GoogleMap(
+                                          mapType: MapType.normal,
+                                          initialCameraPosition: CameraPosition(
+                                            target: LatLng(snapshot.data.lat,
+                                                snapshot.data.lng),
+                                            zoom: _kMapZoom,
+                                          ),
+                                          zoomControlsEnabled: false,
+                                          liteModeEnabled: true,
+                                          myLocationEnabled: true,
+                                          onMapCreated:
+                                              (GoogleMapController controller) {
+                                            // _controller.complete(controller);
+                                          },
+                                        ),
+                                      ),
+                                      Positioned.fill(
+                                        // bottom: 0,
+                                        // height: SizeConfig.screenHeight * 0.65,
+                                        // width: SizeConfig.screenWidth,
+                                        child: Container(
+                                          height:
+                                              SizeConfig.screenHeight * 0.65,
+                                          width: SizeConfig.screenWidth,
+                                          child: ListView.builder(
+                                            itemBuilder: (_, int index) {
+                                              final restaurant =
+                                                  restaurantSnapshots
+                                                      .data[index];
+                                              return ListTile(
+                                                onTap: () {},
+                                                title: Text(restaurant.name),
+                                              );
+                                            },
+                                            // physics: BouncingScrollPhysics(),
+                                            itemCount:
+                                                restaurantSnapshots.hasData
+                                                    ? restaurantSnapshots
+                                                        .data.length
+                                                    : 0,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  );
                             // : Container();
                           },
                         )
