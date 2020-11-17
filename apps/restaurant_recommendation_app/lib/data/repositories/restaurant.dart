@@ -12,7 +12,7 @@ class RestaurantRepository implements BaseRestaurantRepository {
   Future<BaseRestaurant> getRestaurantById({String id}) {}
 
   @override
-  Stream<List<BaseRestaurant>> getRestaurants({BasePosition position}) async* {
+  Future<List<BaseRestaurant>> getRestaurants({BasePosition position}) async {
     // get all restaurants
     final response = await http.get(
         "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${position.lat},${position.lng}&rankby=distance&type=restaurant&key=$kGoogleMapsApiKey");
@@ -22,12 +22,13 @@ class RestaurantRepository implements BaseRestaurantRepository {
 
     try {
       // retrieve results
-      var decodedResult = json.decode(body);
+      var decodedResult = json.decode(body) ?? [];
       var decodedResponse = Response.fromJson(decodedResult);
       print("Status => ${decodedResponse.status}");
-      yield decodedResponse.results;
+      return decodedResponse.results;
     } catch (e) {
       print("Unable to load restaurants => $e");
+      return [];
     }
   }
 }

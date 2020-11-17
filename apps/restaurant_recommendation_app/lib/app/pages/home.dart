@@ -38,9 +38,9 @@ class _HomePageState extends State<HomePage> {
                       child: CircularProgressIndicator.adaptive(),
                     )
                   : snapshot.hasData
-                      ? StreamBuilder<List<BaseRestaurant>>(
+                      ? FutureBuilder<List<BaseRestaurant>>(
                           initialData: [],
-                          stream: _restaurantRepo.getRestaurants(
+                          future: _restaurantRepo.getRestaurants(
                               position: snapshot.data),
                           builder: (context, restaurantSnapshots) {
                             return restaurantSnapshots.connectionState ==
@@ -48,14 +48,59 @@ class _HomePageState extends State<HomePage> {
                                 ? Center(
                                     child: CircularProgressIndicator.adaptive(),
                                   )
-                                : Container(
-                                    height: SizeConfig.screenHeight,
-                                    width: SizeConfig.screenWidth,
-                                    child: Center(
-                                      child: Text(restaurantSnapshots.data
-                                              ?.toString() ??
-                                          "Nothing found"),
-                                    ),
+                                : Stack(
+                                    fit: StackFit.expand,
+                                    children: [
+                                      Positioned(
+                                        top: 0,
+                                        height: SizeConfig.screenHeight * 0.4,
+                                        width: SizeConfig.screenWidth,
+                                        child: GoogleMap(
+                                          mapType: MapType.normal,
+                                          initialCameraPosition: CameraPosition(
+                                            target: LatLng(snapshot.data.lat,
+                                                snapshot.data.lng),
+                                            zoom: _kMapZoom,
+                                          ),
+                                          zoomControlsEnabled: false,
+                                          liteModeEnabled: true,
+                                          myLocationEnabled: true,
+                                          onMapCreated:
+                                              (GoogleMapController controller) {
+                                            // _controller.complete(controller);
+                                          },
+                                        ),
+                                      ),
+                                      Positioned(
+                                        bottom: 0,
+                                        height: SizeConfig.screenHeight * 0.65,
+                                        width: SizeConfig.screenWidth,
+                                        child: Container(
+                                          height:
+                                              SizeConfig.screenHeight * 0.65,
+                                          width: SizeConfig.screenWidth,
+                                          child: ListView.builder(
+                                            itemBuilder: (_, int index) {
+                                              final restaurant =
+                                                  restaurantSnapshots
+                                                      .data[index];
+                                              return ListTile(
+                                                onTap: () {},
+                                                title: Text(restaurant.name),
+                                                subtitle:
+                                                    Text(restaurant.vicinity),
+                                              );
+                                            },
+                                            // physics: BouncingScrollPhysics(),
+                                            itemCount:
+                                                restaurantSnapshots.hasData
+                                                    ? restaurantSnapshots
+                                                        .data.length
+                                                    : 0,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   );
                             // : Container();
                           },
