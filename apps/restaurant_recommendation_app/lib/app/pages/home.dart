@@ -79,6 +79,7 @@ class _HomePageState extends State<HomePage> {
                                           height:
                                               SizeConfig.screenHeight * 0.65,
                                           width: SizeConfig.screenWidth,
+                                          
                                           child: ListView.builder(
                                             itemBuilder: (_, int index) {
                                               final restaurant =
