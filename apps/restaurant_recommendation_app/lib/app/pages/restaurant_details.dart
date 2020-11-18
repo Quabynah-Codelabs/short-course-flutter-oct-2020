@@ -4,6 +4,7 @@ import 'package:meta/meta.dart';
 import 'package:restaurant_recommendation_app/core/constants.dart';
 import 'package:restaurant_recommendation_app/core/size_config.dart';
 import 'package:restaurant_recommendation_app/domain/entities/restaurant.dart';
+import 'package:sliding_sheet/sliding_sheet.dart';
 
 /// Shows the details of a restaurant
 class RestaurantDetailsPage extends StatefulWidget {
@@ -18,6 +19,10 @@ class RestaurantDetailsPage extends StatefulWidget {
 
 class _RestaurantDetailsPageState extends State<RestaurantDetailsPage> {
   ThemeData _kTheme;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _formKey = GlobalKey<FormState>();
+  final _reviewController = TextEditingController();
+  final _reviewSheetController = SheetController();
 
   bool _isOperational() =>
       widget.restaurant.status.toLowerCase() == "operational";
@@ -27,6 +32,7 @@ class _RestaurantDetailsPageState extends State<RestaurantDetailsPage> {
     _kTheme = Theme.of(context);
 
     return Scaffold(
+      key: _scaffoldKey,
       body: SafeArea(
         child: Stack(
           fit: StackFit.expand,
@@ -111,6 +117,15 @@ class _RestaurantDetailsPageState extends State<RestaurantDetailsPage> {
               InkWell(
                 onTap: () {
                   // TODO: Week 7: Add review
+                  // _scaffoldKey.currentState.showBottomSheet(
+                  //   (context) => Container(
+                  //     height: SizeConfig.screenHeight * 0.4,
+                  //     width: SizeConfig.screenWidth,
+                  //     color: _kTheme.errorColor,
+                  //   ),
+                  // );
+
+                  showAsBottomSheet();
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -150,4 +165,66 @@ class _RestaurantDetailsPageState extends State<RestaurantDetailsPage> {
           ],
         ),
       );
+
+  void showAsBottomSheet() async =>
+      await showSlidingBottomSheet(context, builder: (context) {
+        return SlidingSheetDialog(
+          elevation: 8,
+          cornerRadius: 16,
+          controller: _reviewSheetController,
+          snapSpec: const SnapSpec(
+            snap: true,
+            snappings: [0.4, 0.7, 1.0],
+            positioning: SnapPositioning.relativeToAvailableSpace,
+          ),
+          // headerBuilder: (_, __) => Material(child: Container()),
+          // footerBuilder: (_, __) => Material(child: Container()),
+          builder: (context, state) {
+            return Material(
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: kSpacingX24,
+                  vertical: kSpacingX16,
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: _reviewController,
+                        validator: (input) =>
+                            input.isNotEmpty ? null : "Please add a review",
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          hintText: "Enter review message",
+                        ),
+                        onFieldSubmitted: (input) {
+                          _reviewSheetController.collapse();
+                          _saveReview(input);
+                        },
+                      ),
+                      // TODO: 1. Add button here to save review
+                      // TODO: 2. invoke method to save the form and submit the review to the database
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        );
+      });
+
+  // HINT: onTap: () => _saveAndSubmit(), or onTap: _saveAndSubmit,
+  void _saveAndSubmit() {
+    if (_formKey.currentState.validate()) {
+      var reviewTyped = _reviewController.text;
+      _reviewSheetController.collapse();
+      _saveReview(reviewTyped);
+    }
+  }
+
+  // TODO: Save review to database
+  void _saveReview(String input) {
+    print("Your review is: $input");
+  }
 }
