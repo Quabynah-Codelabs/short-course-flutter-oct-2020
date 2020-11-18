@@ -8,6 +8,9 @@ part of 'restaurant.dart';
 
 Restaurant _$RestaurantFromJson(Map<String, dynamic> json) {
   return Restaurant(
+    geometry: json['geometry'] == null
+        ? null
+        : Geometry.fromJson(json['geometry'] as Map<String, dynamic>),
     name: json['name'] as String,
     vicinity: json['vicinity'] as String,
     status: json['business_status'] as String,
@@ -20,6 +23,7 @@ Map<String, dynamic> _$RestaurantToJson(Restaurant instance) =>
     <String, dynamic>{
       'name': instance.name,
       'vicinity': instance.vicinity,
+      'geometry': instance.geometry,
       'business_status': instance.status,
       'place_id': instance.placeId,
       'types': instance.types,

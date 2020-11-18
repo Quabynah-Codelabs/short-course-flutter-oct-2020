@@ -9,6 +9,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+
   # json annotation for dart code generation
   json_annotation: ^3.1.0
   # helps us to make calls to the Google Places API service
