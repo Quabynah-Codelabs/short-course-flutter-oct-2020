@@ -9,6 +9,12 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  # shared preferences: stores key-value pairs onto the device's storage
+  shared_preferences: ^0.5.12+4
+  # firebase SDKs
+  firebase_core: ^0.5.2
+  firebase_auth: ^0.18.3
+  cloud_firestore: ^0.14.3
   # handles google sign in
   google_sign_in: ^4.5.6
   # sliding bottom sheet

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "684540709121-7rnlk5sml514t2ejsrdfhobljdhfrlf5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dennis.restaurant_recommendation_app",
+            "certificate_hash": "343dbe19f387d899df7192dc6fa2f12b6151ee7c"
+          }
+        },
+        {
           "client_id": "684540709121-ck5sipjsm03vj2rr4e2d6e0i9rpjqr5s.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -30,6 +38,13 @@
             {
               "client_id": "684540709121-ck5sipjsm03vj2rr4e2d6e0i9rpjqr5s.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "684540709121-11k70h23vjbjttgmojh1vd2gl6ll8vkc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "dennis.restaurant-recommendation-app"
+              }
             }
           ]
         }

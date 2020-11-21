@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meta/meta.dart';
+import 'package:restaurant_recommendation_app/app/widgets/button.dart';
 import 'package:restaurant_recommendation_app/core/constants.dart';
 import 'package:restaurant_recommendation_app/core/size_config.dart';
 import 'package:restaurant_recommendation_app/domain/entities/restaurant.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:restaurant_recommendation_app/core/constants.dart';
+import 'package:restaurant_recommendation_app/core/size_config.dart';
 
 /// Creates a button with a colored background
 class ButtonPrimary extends StatelessWidget {
