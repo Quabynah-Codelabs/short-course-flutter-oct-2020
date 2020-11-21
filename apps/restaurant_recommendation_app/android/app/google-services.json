@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "684540709121",
+    "firebase_url": "https://popina-295217.firebaseio.com",
+    "project_id": "popina-295217",
+    "storage_bucket": "popina-295217.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684540709121:android:2faaca200294b480e0b300",
+        "android_client_info": {
+          "package_name": "dennis.restaurant_recommendation_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "684540709121-ck5sipjsm03vj2rr4e2d6e0i9rpjqr5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBSCwDKZs7LjBBELS0A-tf270j_iGjdkw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "684540709121-ck5sipjsm03vj2rr4e2d6e0i9rpjqr5s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
