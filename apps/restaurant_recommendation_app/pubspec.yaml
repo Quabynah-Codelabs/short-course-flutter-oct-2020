@@ -9,6 +9,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  # handles google sign in
+  google_sign_in: ^4.5.6
   # sliding bottom sheet
   sliding_sheet: ^0.4.1
   # json annotation for dart code generation

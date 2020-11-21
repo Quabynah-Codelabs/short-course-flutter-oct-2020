@@ -179,6 +179,19 @@ class _RestaurantDetailsPageState extends State<RestaurantDetailsPage> {
           ),
           // headerBuilder: (_, __) => Material(child: Container()),
           // footerBuilder: (_, __) => Material(child: Container()),
+          headerBuilder: (context, state) {
+            return Container(
+              height: 56,
+              width: double.infinity,
+              color: _kTheme.colorScheme.primary,
+              alignment: Alignment.center,
+              child: Text(
+                "Review \"${widget.restaurant.name}\"",
+                style: _kTheme.textTheme.bodyText1
+                    .copyWith(color: _kTheme.colorScheme.onPrimary),
+              ),
+            );
+          },
           builder: (context, state) {
             return Material(
               child: Container(
@@ -199,12 +212,24 @@ class _RestaurantDetailsPageState extends State<RestaurantDetailsPage> {
                           hintText: "Enter review message",
                         ),
                         onFieldSubmitted: (input) {
-                          _reviewSheetController.collapse();
-                          _saveReview(input);
+                          _saveAndSubmit();
                         },
                       ),
-                      // TODO: 1. Add button here to save review
-                      // TODO: 2. invoke method to save the form and submit the review to the database
+                      SizedBox(height: kSpacingX16),
+                      InkWell(
+                        onTap: _saveAndSubmit,
+                        child: Container(
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(vertical: kSpacingX16),
+                          decoration: BoxDecoration(
+                            color: _kTheme.colorScheme.primary,
+                          ),
+                          child: Text(
+                            "Submit",
+                            style: _kTheme.textTheme.button,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -218,12 +243,12 @@ class _RestaurantDetailsPageState extends State<RestaurantDetailsPage> {
   void _saveAndSubmit() {
     if (_formKey.currentState.validate()) {
       var reviewTyped = _reviewController.text;
-      _reviewSheetController.collapse();
+      Navigator.of(context).pop();
       _saveReview(reviewTyped);
     }
   }
 
-  // TODO: Save review to database
+  // TODO: Save review to database and show a list of reviews under the map
   void _saveReview(String input) {
     print("Your review is: $input");
   }
