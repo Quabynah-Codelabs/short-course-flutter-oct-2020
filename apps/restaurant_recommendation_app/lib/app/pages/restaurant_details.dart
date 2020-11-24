@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meta/meta.dart';
-import 'package:restaurant_recommendation_app/app/widgets/button.dart';
+import 'package:restaurant_recommendation_app/data/database/moor_database.dart';
 import 'package:restaurant_recommendation_app/core/constants.dart';
 import 'package:restaurant_recommendation_app/core/size_config.dart';
-import 'package:restaurant_recommendation_app/domain/entities/restaurant.dart';
 import 'package:sliding_sheet/sliding_sheet.dart';
 
 /// Shows the details of a restaurant
 class RestaurantDetailsPage extends StatefulWidget {
-  final BaseRestaurant restaurant;
+  final Restaurant restaurant;
 
   const RestaurantDetailsPage({Key key, @required this.restaurant})
       : super(key: key);
@@ -107,8 +106,8 @@ class _RestaurantDetailsPageState extends State<RestaurantDetailsPage> {
                     initialCameraPosition: CameraPosition(
                       zoom: 17,
                       target: LatLng(
-                        widget.restaurant.geometry.position.lat,
-                        widget.restaurant.geometry.position.lng,
+                        widget.restaurant.lat,
+                        widget.restaurant.lng,
                       ),
                     ),
                   ),

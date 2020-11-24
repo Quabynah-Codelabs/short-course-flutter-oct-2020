@@ -10,10 +10,7 @@ Response _$ResponseFromJson(Map<String, dynamic> json) {
   return Response(
     attributions: json['html_attributions'] as List,
     nextPageToken: json['next_page_token'] as String,
-    results: (json['results'] as List)
-        ?.map((e) =>
-            e == null ? null : Restaurant.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    results: json['results'] as List,
     status: json['status'] as String,
   );
 }

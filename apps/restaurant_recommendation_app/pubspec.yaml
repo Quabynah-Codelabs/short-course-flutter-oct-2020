@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   # moor: sql database implementation using dart
-  moor: ^3.4.0
+  moor_flutter: ^3.1.0
   # shared preferences: stores key-value pairs onto the device's storage
   shared_preferences: ^0.5.12+4
   # firebase SDKs

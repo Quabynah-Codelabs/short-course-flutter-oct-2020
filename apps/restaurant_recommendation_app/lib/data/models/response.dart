@@ -10,7 +10,7 @@ class Response extends BaseResponse {
   @JsonKey(name: "html_attributions")
   final List<dynamic> attributions;
   final String nextPageToken;
-  final List<Restaurant> results;
+  final List<dynamic> results;
   final String status;
 
   Response({this.attributions, this.nextPageToken, this.results, this.status});

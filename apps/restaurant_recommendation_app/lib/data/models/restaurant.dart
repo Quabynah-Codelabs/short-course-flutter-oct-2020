@@ -1,35 +1,14 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:restaurant_recommendation_app/data/models/geometry.dart';
-import 'package:restaurant_recommendation_app/domain/entities/restaurant.dart';
+import 'package:moor/moor.dart';
 
-part 'restaurant.g.dart';
+@DataClassName("Restaurant")
+class PopinaRestaurant extends Table {
+  TextColumn get name => text()();
+  TextColumn get status => text().nullable()();
+  TextColumn get placeId => text().nullable().named("place_id")();
+  TextColumn get vicinity => text().nullable()();
+  RealColumn get lat => real()();
+  RealColumn get lng => real()();
 
-@JsonSerializable(fieldRename: FieldRename.snake)
-class Restaurant extends BaseRestaurant {
-  final String name;
-  final String vicinity;
-  final Geometry geometry;
-  @JsonKey(name: "business_status")
-  final String status;
-  final String placeId;
-  final List<String> types;
-
-  Restaurant(
-      {this.geometry,
-      this.name,
-      this.vicinity,
-      this.status,
-      this.placeId,
-      this.types});
-
-  /// A necessary factory constructor for creating a new User instance
-  /// from a map. Pass the map to the generated `_$RestaurantFromJson()` constructor.
-  /// The constructor is named after the source class, in this case, Restaurant.
-  factory Restaurant.fromJson(Map<String, dynamic> json) =>
-      _$RestaurantFromJson(json);
-
-  /// `toJson` is the convention for a class to declare support for serialization
-  /// to JSON. The implementation simply calls the private, generated
-  /// helper method `_$RestaurantToJson`.
-  Map<String, dynamic> toJson() => _$RestaurantToJson(this);
+  @override
+  Set<Column> get primaryKey => {name};
 }
