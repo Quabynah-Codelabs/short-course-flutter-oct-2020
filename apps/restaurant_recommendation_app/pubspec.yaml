@@ -9,6 +9,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  # moor: sql database implementation using dart
+  moor: ^3.4.0
   # shared preferences: stores key-value pairs onto the device's storage
   shared_preferences: ^0.5.12+4
   # firebase SDKs
@@ -37,6 +39,8 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  # generator for moor package
+  moor_generator: ^3.4.0
   # code generator for dart
   build_runner: ^1.10.4
   # serializer
