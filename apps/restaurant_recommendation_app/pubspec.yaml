@@ -9,6 +9,20 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  # moor: sql database implementation using dart
+  moor: ^3.4.0
+  # shared preferences: stores key-value pairs onto the device's storage
+  shared_preferences: ^0.5.12+4
+  # firebase SDKs
+  firebase_core: ^0.5.2
+  firebase_auth: ^0.18.3
+  cloud_firestore: ^0.14.3
+  # handles google sign in
+  google_sign_in: ^4.5.6
+  # sliding bottom sheet
+  sliding_sheet: ^0.4.1
+  # json annotation for dart code generation
+  json_annotation: ^3.1.0
   # helps us to make calls to the Google Places API service
   http: ^0.12.2
   # user's current location
@@ -25,6 +39,12 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  # generator for moor package
+  moor_generator: ^3.4.0
+  # code generator for dart
+  build_runner: ^1.10.4
+  # serializer
+  json_serializable: ^3.5.0
   flutter_test:
     sdk: flutter
 

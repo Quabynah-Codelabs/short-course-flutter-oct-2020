@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
    <application
-        android:label="restaurant_recommendation_app"
+        android:label="Popina"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
