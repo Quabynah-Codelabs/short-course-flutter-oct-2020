@@ -9,6 +9,9 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  #json annotation
+  json_annotation: ^3.1.0
+
   #helps to make calls to google API services
   http: ^0.12.2
 
@@ -26,6 +29,12 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  #json serializable
+  json_serializable: ^3.5.0
+
+#build runner
+  build_runner: ^1.10.4
+
   flutter_test:
     sdk: flutter
 

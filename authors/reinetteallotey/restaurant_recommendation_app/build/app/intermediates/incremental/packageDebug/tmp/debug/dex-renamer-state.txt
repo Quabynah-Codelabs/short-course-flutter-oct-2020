@@ -1,4 +1,19 @@
-#Wed Nov 04 18:24:13 GMT 2020
-base.0=C\:\\Users\\Reinette\\Documents\\GitHub\\short-course-flutter-oct-2020\\authors\\reinetteallotey\\restaurant_recommendation_app\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+#Sat Nov 14 11:38:33 GMT 2020
+path.1=classes.dex
 path.0=classes.dex
+renamed.5=classes6.dex
+renamed.4=classes5.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
+base.5=C\:\\Users\\Reinette\\Documents\\GitHub\\short-course-flutter-oct-2020\\authors\\reinetteallotey\\restaurant_recommendation_app\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\out\\classes_3.dex
+base.4=C\:\\Users\\Reinette\\Documents\\GitHub\\short-course-flutter-oct-2020\\authors\\reinetteallotey\\restaurant_recommendation_app\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\out\\classes_2.dex
+base.3=C\:\\Users\\Reinette\\Documents\\GitHub\\short-course-flutter-oct-2020\\authors\\reinetteallotey\\restaurant_recommendation_app\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\out\\classes_1.dex
+base.2=C\:\\Users\\Reinette\\Documents\\GitHub\\short-course-flutter-oct-2020\\authors\\reinetteallotey\\restaurant_recommendation_app\\build\\app\\intermediates\\dex\\debug\\mergeLibDexDebug\\out\\classes_0.dex
+base.1=C\:\\Users\\Reinette\\Documents\\GitHub\\short-course-flutter-oct-2020\\authors\\reinetteallotey\\restaurant_recommendation_app\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
+base.0=C\:\\Users\\Reinette\\Documents\\GitHub\\short-course-flutter-oct-2020\\authors\\reinetteallotey\\restaurant_recommendation_app\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+path.5=classes_3.dex
+path.4=classes_2.dex
+path.3=classes_1.dex
+path.2=classes_0.dex
