@@ -38,7 +38,7 @@ void main() {
   });
 
   /// tests for preferences
-  group("testing preferences", () {
+  group("testing preferences repository", () {
     test("save & retrieve user id", () async {
       /// arrange
       // user id to be saved
@@ -64,7 +64,7 @@ void main() {
   });
 
   /// tests for authentication
-  group("testing authentication", () {
+  group("testing authentication repository", () {
     test("google sign in", () async {
       /// arrange
       when(_authRepo.googleSignIn()).thenAnswer((_) => Future.value(true));
@@ -78,7 +78,7 @@ void main() {
   });
 
   /// test location
-  group("testing location service", () {
+  group("testing location repository", () {
     test("get user location stream", () {
       /// arrange
       final userLocation = MockPosition()
