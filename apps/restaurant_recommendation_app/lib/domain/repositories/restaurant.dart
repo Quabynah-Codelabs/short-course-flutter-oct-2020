@@ -5,6 +5,5 @@ import 'package:restaurant_recommendation_app/domain/entities/restaurant.dart';
 abstract class BaseRestaurantRepository {
   Future<List<BaseRestaurant>> getRestaurants({BasePosition position});
 
-
   Future<BaseRestaurant> getRestaurantById({String id});
 }

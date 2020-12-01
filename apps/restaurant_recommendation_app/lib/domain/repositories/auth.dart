@@ -1,5 +1,5 @@
 /// handles authentication
-abstract class AuthService {
+abstract class BaseAuthRepository {
   Future<bool> googleSignIn();
 
   bool get isLoggedIn;

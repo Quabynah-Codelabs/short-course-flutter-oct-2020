@@ -1,6 +1,6 @@
 /// Base position of a user
 abstract class BasePosition {
-  double get lat;
+  double lat;
 
-  double get lng;
+  double lng;
 }

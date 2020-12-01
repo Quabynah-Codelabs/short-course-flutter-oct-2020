@@ -2,15 +2,15 @@ import 'geometry.dart';
 
 /// Base class for all restaurants
 abstract class BaseRestaurant {
-  String get name;
+  String name;
 
-  String get status;
+  String status;
 
-  String get placeId;
+  String placeId;
 
-  BaseGeometry get geometry;
+  BaseGeometry geometry;
 
-  List<String> get types;
+  List<String> types;
 
-  String get vicinity;
+  String vicinity;
 }

@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 const _userIdKey = "user_id";
 
 class PreferenceServiceImpl extends ChangeNotifier
-    implements PreferenceService {
+    implements BasePreferenceRepository {
   SharedPreferences _prefs;
   String _userId;
   StreamController<String> _userIdStreamController =
@@ -48,7 +48,7 @@ class PreferenceServiceImpl extends ChangeNotifier
   bool get isLoggedIn => _userId != null && _userId.isNotEmpty;
 
   @override
-  Stream<String> onUserIdChange() => _userIdStreamController.stream;
+  Future<String> onUserIdChange() => _userIdStreamController.stream.first;
 
   @override
   void dispose() {
