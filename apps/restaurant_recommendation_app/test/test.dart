@@ -16,6 +16,8 @@ import 'restaurant.dart';
 void main() {
   // ensures that flutter is running on the target device
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  /// repositories
   BasePreferenceRepository _prefsRepo;
   BaseAuthRepository _authRepo;
   BaseLocationRepository _locationRepo;
