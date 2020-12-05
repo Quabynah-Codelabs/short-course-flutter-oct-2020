@@ -1,0 +1,26 @@
+name: hairstyle_app
+description: Hairstyle application for a virtual shop
+
+publish_to: 'none'
+
+version: 1.0.0-alpha+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons:
+  flutter_icons:
+  google_fonts:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+
