@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "title": "Lorem 1",
+    "body": "We are all gathered here today to code!!!",
+    "createdAt": "6:15 am",
+    "color": 4293892762,
+    "completed": false
+  },
+  {
+    "id": "2",
+    "title": "Lorem 2",
+    "body": "We are all gathered here today to code!!!",
+    "createdAt": "6:15 am",
+    "color": 4281944491,
+    "completed": true
+  },
+  {
+    "id": "3",
+    "title": "Lorem 3",
+    "body": "We are all gathered here today to code!!!",
+    "createdAt": "6:15 am",
+    "color": 4280391411,
+    "completed": false
+  },
+  {
+    "id": "4",
+    "title": "Lorem 4",
+    "body": "We are all gathered here today to code!!!",
+    "createdAt": "6:15 am",
+    "color": 4289415100,
+    "completed": true
+  },
+  {
+    "id": "5",
+    "title": "Lorem 5",
+    "body": "We are all gathered here today to code!!!",
+    "createdAt": "6:15 am",
+    "color": 4293227379,
+    "completed": false
+  }
+]

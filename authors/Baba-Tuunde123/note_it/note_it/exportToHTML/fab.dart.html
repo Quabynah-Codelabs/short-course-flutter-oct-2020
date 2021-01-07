@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>fab.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+.s3 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+fab.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+
+<span class="s2">class </span><span class="s0">NoteFAB </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">final </span><span class="s0">IconData icon;</span>
+  <span class="s2">final </span><span class="s0">bool isLoading;</span>
+  <span class="s2">final </span><span class="s0">Color backgroundColor;</span>
+  <span class="s2">final </span><span class="s0">Color iconColor;</span>
+  <span class="s2">final </span><span class="s0">Function onTap;</span>
+
+  <span class="s2">const </span><span class="s0">NoteFAB({</span>
+    <span class="s0">Key key,</span>
+    <span class="s0">@required </span><span class="s2">this</span><span class="s0">.icon,</span>
+    <span class="s0">@required </span><span class="s2">this</span><span class="s0">.onTap,</span>
+    <span class="s2">this</span><span class="s0">.isLoading = </span><span class="s2">false</span><span class="s0">,</span>
+    <span class="s2">this</span><span class="s0">.backgroundColor,</span>
+    <span class="s2">this</span><span class="s0">.iconColor,</span>
+  <span class="s0">}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_NoteFABState createState() =&gt; _NoteFABState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_NoteFABState </span><span class="s2">extends </span><span class="s0">State&lt;NoteFAB&gt; {</span>
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">final </span><span class="s0">kTheme = Theme.of(context);</span>
+
+    <span class="s2">return </span><span class="s0">GestureDetector(</span>
+      <span class="s0">onTap: widget.onTap,</span>
+      <span class="s0">child: Material(</span>
+        <span class="s0">type: MaterialType.transparency,</span>
+        <span class="s0">elevation: </span><span class="s3">4</span><span class="s0">,</span>
+        <span class="s0">child: Container(</span>
+          <span class="s0">height: kToolbarHeight,</span>
+          <span class="s0">width: kToolbarHeight,</span>
+          <span class="s0">decoration: BoxDecoration(</span>
+            <span class="s0">shape: BoxShape.circle,</span>
+            <span class="s0">color: widget.backgroundColor ?? kTheme.colorScheme.secondary,</span>
+          <span class="s0">),</span>
+          <span class="s0">alignment: Alignment.center,</span>
+          <span class="s0">child: widget.isLoading</span>
+              <span class="s0">? CircularProgressIndicator(</span>
+                  <span class="s0">valueColor: AlwaysStoppedAnimation(</span>
+                      <span class="s0">widget.iconColor ?? kTheme.colorScheme.onSecondary),</span>
+                <span class="s0">)</span>
+              <span class="s0">: Icon(</span>
+                  <span class="s0">widget.icon,</span>
+                  <span class="s0">color: widget.iconColor ?? kTheme.colorScheme.onSecondary,</span>
+                <span class="s0">),</span>
+        <span class="s0">),</span>
+      <span class="s0">),</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>

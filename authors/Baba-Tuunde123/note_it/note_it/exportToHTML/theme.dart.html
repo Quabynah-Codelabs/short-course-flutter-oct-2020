@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>theme.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #8c8c8c; font-style: italic;}
+.s3 { color: #0033b3;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+theme.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:note_it/constants.dart'</span><span class="s0">;</span>
+
+<span class="s2">/// light theme</span>
+<span class="s3">final </span><span class="s0">kLightTheme = ThemeData.light().copyWith(</span>
+  <span class="s0">primaryColor: kPrimaryColor,</span>
+  <span class="s0">accentColor: kAccentColor,</span>
+  <span class="s0">scaffoldBackgroundColor: kBackgroundColor,</span>
+  <span class="s0">backgroundColor: kBackgroundColor,</span>
+  <span class="s0">colorScheme: ColorScheme.light(</span>
+    <span class="s0">primary: kPrimaryColor,</span>
+    <span class="s0">secondary: kAccentColor,</span>
+    <span class="s0">background: kBackgroundColor,</span>
+  <span class="s0">),</span>
+<span class="s0">);</span>
+
+<span class="s2">/// dark theme</span>
+<span class="s3">final </span><span class="s0">kDarkTheme = ThemeData.dark().copyWith();</span>
+</pre>
+</body>
+</html>

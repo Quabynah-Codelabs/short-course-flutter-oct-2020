@@ -1,0 +1,219 @@
+<html>
+<head>
+<title>note_list_view.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #080808;}
+.s1 { color: #067d17;}
+.s2 { color: #0033b3;}
+.s3 { color: #1750eb;}
+.s4 { color: #8c8c8c; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+note_list_view.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:note_it/constants.dart'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">'package:note_it/note.dart'</span><span class="s0">;</span>
+
+<span class="s2">class </span><span class="s0">NoteListView </span><span class="s2">extends </span><span class="s0">StatelessWidget {</span>
+  <span class="s2">final </span><span class="s0">List&lt;Note&gt; notes;</span>
+  <span class="s2">final </span><span class="s0">bool showAsGrid;</span>
+
+  <span class="s2">const </span><span class="s0">NoteListView({</span>
+    <span class="s0">Key key,</span>
+    <span class="s2">this</span><span class="s0">.notes = </span><span class="s2">const </span><span class="s0">[],</span>
+    <span class="s2">this</span><span class="s0">.showAsGrid = </span><span class="s2">false</span><span class="s0">,</span>
+  <span class="s0">}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">var </span><span class="s0">kWidth = MediaQuery.of(context).size.width;</span>
+    <span class="s2">var </span><span class="s0">kHeight = MediaQuery.of(context).size.height;</span>
+
+    <span class="s2">return </span><span class="s0">Container(</span>
+        <span class="s0">width: kWidth,</span>
+        <span class="s0">height: kHeight,</span>
+        <span class="s0">padding: EdgeInsets.only(</span>
+          <span class="s0">top: kToolbarHeight,</span>
+          <span class="s0">left: </span><span class="s3">8</span><span class="s0">,</span>
+          <span class="s0">right: </span><span class="s3">8</span><span class="s0">,</span>
+        <span class="s0">),</span>
+        <span class="s0">child: showAsGrid</span>
+            <span class="s0">? GridView.builder(</span>
+                <span class="s0">itemBuilder: (_, index) {</span>
+                  <span class="s2">final </span><span class="s0">noteItem = notes[index];</span>
+                  <span class="s2">return </span><span class="s0">NoteGridItem(noteItem: noteItem);</span>
+                <span class="s0">},</span>
+                <span class="s0">gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(</span>
+                  <span class="s0">crossAxisCount: </span><span class="s3">2</span><span class="s0">,</span>
+                  <span class="s0">crossAxisSpacing: </span><span class="s3">8</span><span class="s0">,</span>
+                  <span class="s0">mainAxisSpacing: </span><span class="s3">8</span><span class="s0">,</span>
+                <span class="s0">),</span>
+                <span class="s0">itemCount: notes.length,</span>
+              <span class="s0">)</span>
+            <span class="s0">: ListView.separated(</span>
+                <span class="s0">itemBuilder: (_, index) {</span>
+                  <span class="s2">final </span><span class="s0">noteItem = notes[index];</span>
+                  <span class="s2">return </span><span class="s0">NoteListItem(noteItem: noteItem);</span>
+                <span class="s0">},</span>
+                <span class="s0">separatorBuilder: (_, __) =&gt; Divider(),</span>
+                <span class="s0">itemCount: notes.length,</span>
+              <span class="s0">));</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+<span class="s4">/// Grid item for note</span>
+<span class="s2">class </span><span class="s0">NoteGridItem </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">final </span><span class="s0">Note noteItem;</span>
+
+  <span class="s2">const </span><span class="s0">NoteGridItem({Key key, </span><span class="s2">this</span><span class="s0">.noteItem}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_NoteGridItemState createState() =&gt; _NoteGridItemState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_NoteGridItemState </span><span class="s2">extends </span><span class="s0">State&lt;NoteGridItem&gt; {</span>
+  <span class="s0">Note _fakeNote;</span>
+
+  <span class="s0">@override</span>
+  <span class="s2">void </span><span class="s0">initState() {</span>
+    <span class="s2">super</span><span class="s0">.initState();</span>
+    <span class="s2">if </span><span class="s0">(mounted) {</span>
+      <span class="s0">_fakeNote = widget.noteItem;</span>
+      <span class="s0">setState(() {});</span>
+    <span class="s0">}</span>
+  <span class="s0">}</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">final </span><span class="s0">kTheme = Theme.of(context);</span>
+    <span class="s2">return </span><span class="s0">Stack(</span>
+      <span class="s0">key: ValueKey(_fakeNote.id),</span>
+      <span class="s0">children: [</span>
+        <span class="s0">Positioned.fill(</span>
+          <span class="s0">child: Container(</span>
+            <span class="s0">padding: EdgeInsets.all(</span><span class="s3">16</span><span class="s0">),</span>
+            <span class="s0">decoration: BoxDecoration(</span>
+              <span class="s0">border: Border.all(</span>
+                <span class="s0">color:</span>
+                    <span class="s0">kTheme.colorScheme.onBackground.withOpacity(kEmphasisLow),</span>
+              <span class="s0">),</span>
+              <span class="s0">color: Color(_fakeNote.color),</span>
+              <span class="s0">borderRadius: BorderRadius.circular(</span><span class="s3">16</span><span class="s0">),</span>
+            <span class="s0">),</span>
+            <span class="s0">child: Column(</span>
+              <span class="s0">crossAxisAlignment: CrossAxisAlignment.start,</span>
+              <span class="s0">children: [</span>
+                <span class="s0">Text(</span>
+                  <span class="s0">_fakeNote.title,</span>
+                  <span class="s0">style: kTheme.textTheme.headline6.copyWith(</span>
+                    <span class="s0">decoration: _fakeNote.completed</span>
+                        <span class="s0">? TextDecoration.lineThrough</span>
+                        <span class="s0">: TextDecoration.none,</span>
+                    <span class="s0">color: _fakeNote.completed</span>
+                        <span class="s0">? kTheme.colorScheme.onBackground</span>
+                            <span class="s0">.withOpacity(kEmphasisLow)</span>
+                        <span class="s0">: kTheme.colorScheme.onBackground,</span>
+                  <span class="s0">),</span>
+                <span class="s0">),</span>
+                <span class="s0">SizedBox(</span>
+                  <span class="s0">height: </span><span class="s3">4</span><span class="s0">,</span>
+                <span class="s0">),</span>
+                <span class="s0">Text(</span>
+                  <span class="s0">_fakeNote.body,</span>
+                  <span class="s0">style: kTheme.textTheme.bodyText1.copyWith(</span>
+                    <span class="s0">decoration: _fakeNote.completed</span>
+                        <span class="s0">? TextDecoration.lineThrough</span>
+                        <span class="s0">: TextDecoration.none,</span>
+                    <span class="s0">color: _fakeNote.completed</span>
+                        <span class="s0">? kTheme.colorScheme.onBackground</span>
+                            <span class="s0">.withOpacity(kEmphasisLow)</span>
+                        <span class="s0">: kTheme.colorScheme.onBackground,</span>
+                  <span class="s0">),</span>
+                <span class="s0">),</span>
+              <span class="s0">],</span>
+            <span class="s0">),</span>
+          <span class="s0">),</span>
+        <span class="s0">),</span>
+        <span class="s0">Positioned(</span>
+          <span class="s0">top: </span><span class="s3">4</span><span class="s0">,</span>
+          <span class="s0">right: </span><span class="s3">8</span><span class="s0">,</span>
+          <span class="s0">child: Checkbox(</span>
+            <span class="s0">onChanged: (checked) {</span>
+              <span class="s0">_fakeNote = _fakeNote.copyWith(completed: checked);</span>
+              <span class="s0">setState(() {});</span>
+            <span class="s0">},</span>
+            <span class="s0">value: _fakeNote.completed,</span>
+          <span class="s0">),</span>
+        <span class="s0">),</span>
+      <span class="s0">],</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+
+<span class="s4">/// List item for note</span>
+<span class="s2">class </span><span class="s0">NoteListItem </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s2">final </span><span class="s0">Note noteItem;</span>
+
+  <span class="s2">const </span><span class="s0">NoteListItem({Key key, @required </span><span class="s2">this</span><span class="s0">.noteItem}) : </span><span class="s2">super</span><span class="s0">(key: key);</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">_NoteListItemState createState() =&gt; _NoteListItemState();</span>
+<span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_NoteListItemState </span><span class="s2">extends </span><span class="s0">State&lt;NoteListItem&gt; {</span>
+  <span class="s0">Note _fakeNote;</span>
+
+  <span class="s0">@override</span>
+  <span class="s2">void </span><span class="s0">initState() {</span>
+    <span class="s2">super</span><span class="s0">.initState();</span>
+    <span class="s2">if </span><span class="s0">(mounted) {</span>
+      <span class="s0">_fakeNote = widget.noteItem;</span>
+      <span class="s0">setState(() {});</span>
+    <span class="s0">}</span>
+  <span class="s0">}</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">final </span><span class="s0">kTheme = Theme.of(context);</span>
+
+    <span class="s2">return </span><span class="s0">CheckboxListTile(</span>
+      <span class="s0">tileColor: Color(_fakeNote.color),</span>
+      <span class="s0">title: Text(</span>
+        <span class="s0">_fakeNote.title,</span>
+        <span class="s0">style: TextStyle(</span>
+          <span class="s0">decoration: _fakeNote.completed</span>
+              <span class="s0">? TextDecoration.lineThrough</span>
+              <span class="s0">: TextDecoration.none,</span>
+          <span class="s0">color: _fakeNote.completed</span>
+              <span class="s0">? kTheme.colorScheme.onBackground.withOpacity(kEmphasisLow)</span>
+              <span class="s0">: kTheme.colorScheme.onBackground,</span>
+        <span class="s0">),</span>
+      <span class="s0">),</span>
+      <span class="s0">subtitle: Text(</span>
+        <span class="s0">_fakeNote.body,</span>
+        <span class="s0">style: TextStyle(</span>
+          <span class="s0">decoration: _fakeNote.completed</span>
+              <span class="s0">? TextDecoration.lineThrough</span>
+              <span class="s0">: TextDecoration.none,</span>
+          <span class="s0">color: _fakeNote.completed</span>
+              <span class="s0">? kTheme.colorScheme.onBackground.withOpacity(kEmphasisLow)</span>
+              <span class="s0">: kTheme.colorScheme.onBackground,</span>
+        <span class="s0">),</span>
+      <span class="s0">),</span>
+      <span class="s0">onChanged: (checked) {</span>
+        <span class="s0">_fakeNote = _fakeNote.copyWith(completed: checked);</span>
+        <span class="s0">setState(() {});</span>
+      <span class="s0">},</span>
+      <span class="s0">value: _fakeNote.completed,</span>
+    <span class="s0">);</span>
+  <span class="s0">}</span>
+<span class="s0">}</span>
+</pre>
+</body>
+</html>
