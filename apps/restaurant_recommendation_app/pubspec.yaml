@@ -9,6 +9,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  uuid: any
   # moor: sql database implementation using dart
   moor: ^3.4.0
   # shared preferences: stores key-value pairs onto the device's storage
@@ -39,6 +40,7 @@ dependencies:
   cupertino_icons: ^1.0.0
 
 dev_dependencies:
+  mockito: any
   # generator for moor package
   moor_generator: ^3.4.0
   # code generator for dart

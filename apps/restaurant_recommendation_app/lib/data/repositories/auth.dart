@@ -4,14 +4,12 @@ import 'package:restaurant_recommendation_app/data/repositories/prefs.dart';
 import 'package:restaurant_recommendation_app/domain/repositories/auth.dart';
 import 'package:restaurant_recommendation_app/domain/repositories/prefs.dart';
 
-/// Implements the [AuthService] class
-class AuthServiceImpl implements AuthService {
+/// Implements the [BaseAuthRepository] class
+class AuthServiceImpl implements BaseAuthRepository {
   // get sign in instance
   GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
   FirebaseAuth _auth = FirebaseAuth.instance;
-  PreferenceService _preferenceService = PreferenceServiceImpl();
-
-
+  BasePreferenceRepository _preferenceService = PreferenceServiceImpl();
 
   @override
   Future<bool> googleSignIn() async {

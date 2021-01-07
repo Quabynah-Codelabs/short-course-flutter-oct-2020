@@ -1,6 +1,6 @@
 /// preferences service base class
-abstract class PreferenceService {
-  Stream<String> onUserIdChange();
+abstract class BasePreferenceRepository {
+  Future<String> onUserIdChange();
 
   bool get isLoggedIn;
 
