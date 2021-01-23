@@ -34,7 +34,7 @@ class _WelcomePageState extends State<WelcomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  'Welcome to $kAppName',
+                  'Welcome $kAppName',
                   style: kTheme.textTheme.headline5.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
@@ -67,7 +67,7 @@ class _WelcomePageState extends State<WelcomePage> {
               ],
             ),
           ),
-          
+
         ],
       ),
     );
